@@ -1,0 +1,24 @@
+{
+  "name": "trumptweetsbackend",
+  "version": "1.0.0",
+  "description": "backend for trump twitter app",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Gauraklein/trumpTweetsGraphql.git"
+  },
+  "author": "Gaura Klein",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Gauraklein/trumpTweetsGraphql/issues"
+  },
+  "homepage": "https://github.com/Gauraklein/trumpTweetsGraphql#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "express-graphql": "^0.9.0",
+    "graphql": "^14.6.0"
+  }
+}
