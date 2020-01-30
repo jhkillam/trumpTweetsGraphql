@@ -1,4 +1,4 @@
-# in developlment
+# in development
 
 ---
 
