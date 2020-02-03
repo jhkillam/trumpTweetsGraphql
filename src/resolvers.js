@@ -3,12 +3,15 @@ import { Cat } from "./models/Cat"
 
 export const resolvers = {
     Query: {
-        hello: () => "howdy"
+        hello: () => "howdy",
+        cats: () => Cat.find()
     },
     Mutation: {
-        createCat: (_, { name }) => {
+        createCat: async (_, { name }) => {
             const kitty = new Cat({ name });
-            return kitty.save
+            await kitty.save()
+            console.log('kitty')
+            return kitty;
         }
     }
 }
