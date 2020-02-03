@@ -1,27 +1,25 @@
 import { ApolloServer, gql } from "apollo-server-express";
-import express from "express"
-// import { typeDefs, resolvers } from "./schema";
+import express from "express";
+import mongoose from "mongoose";
+import { typeDefs } from "./typeDefs";
+import { resolvers } from "./resolvers";
+// import { Cat } from "./models/Cat";
 
-const app =  express();
+const startServer = async () => {
+  const app = express();
 
-const typeDefs = gql`
-    type Query {
-        hello: String!
-    }
-`
+  const server = new ApolloServer({
+    typeDefs,
+    resolvers
+  });
 
-const resolvers = {
-    Query: {
-        hello: () => "howdy"
-    }
-}
+  server.applyMiddleware({ app });
 
-const server = new ApolloServer({
-  typeDefs,
-  resolvers
-});
+  await mongoose.connect("mongodb://localhost:27017/test", { useNewUrlParser: true, useUnifiedTopology: true });
 
-server.applyMiddleware({ app });
+  app.listen({ port: 4000 }, () =>
+    console.log(`server is live @ http://localhost:400/${server.graphqlPath}`)
+  );
+};
 
-app.listen({ port: 4000 }, () =>
-    console.log(`server is live @ http://localhost:400/${server.graphqlPath}`))
+startServer()
